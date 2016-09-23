@@ -1,4 +1,4 @@
-require "oauth2"
+require "ciscospark"
 require "omniauth"
 require "securerandom"
 require "socket"       # for SocketError
