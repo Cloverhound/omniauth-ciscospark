@@ -9,6 +9,7 @@ module OmniAuth
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
       option :client_options, {:site => "https://api.ciscospark.com/v1/authorize"}
+      option :scope, "spark%3Amessages_write%20spark%3Arooms_read%20spark%3Ateams_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Arooms_write%20spark%3Apeople_read%20spark%3Akms%20spark%3Amemberships_write%20spark%3Ateams_write%20spark%3Ateam_memberships_read%20spark%3Ateam_memberships_write
 
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
