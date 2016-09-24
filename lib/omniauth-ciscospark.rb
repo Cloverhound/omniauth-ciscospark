@@ -1,2 +1,2 @@
-
-require File.join('omniauth', 'ciscospark')
+require "omniauth-ciscospark/version" # rubocop:disable FileName
+require "omniauth/strategies/ciscospark"
