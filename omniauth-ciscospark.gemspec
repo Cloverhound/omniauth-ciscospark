@@ -20,5 +20,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "omniauth-ciscospark"
   gem.require_paths = %w(lib)
-  gem.version       = OmniAuth::OAuth2::VERSION
+  gem.version       = OmniAuth::Ciscospark::VERSION
+
+  gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.3.1'
 end
