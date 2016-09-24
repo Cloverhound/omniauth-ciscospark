@@ -1,5 +1,5 @@
 module OmniAuth
-  module OAuth2
+  module Ciscospark
     VERSION = "0.1.1"
   end
 end
