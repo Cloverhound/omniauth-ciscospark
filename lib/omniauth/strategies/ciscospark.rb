@@ -20,6 +20,16 @@ module OmniAuth
       # additional calls (if the user id is returned with the token
       # or as a URI parameter). This may not be possible with all
       # providers.
+
+
+      def authorize_params
+  super.tap do |params|
+
+    session['omniauth.state'] = params[:state] if params['state']
+  end
+end
+
+
       uid{ raw_info['id'] }
 
       info do
