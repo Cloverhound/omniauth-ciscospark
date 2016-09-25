@@ -24,19 +24,6 @@ module OmniAuth
       # or as a URI parameter). This may not be possible with all
       # providers.
 
-
-      def authorize_params
-              options.authorize_params[:state] = SecureRandom.hex(24)
-              params = options.authorize_params.merge(options_for("authorize"))
-              if OmniAuth.config.test_mode
-                @env ||= {}
-                @env["rack.session"] ||= {}
-              end
-              session["omniauth.state"] = params[:state]
-              params
-            end
-
-
       uid{ raw_info['id'] }
 
       info do
