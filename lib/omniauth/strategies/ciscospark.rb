@@ -13,8 +13,6 @@ module OmniAuth
         :authorize_url => '/v1/authorize',
         :token_url     => '/v1/access_token'
       }
-      option :authorize_params, {}
-      option :authorize_options, [:scope]
       option :provider_ignores_state, true
       option :scope, "spark:messages_write spark:rooms_read spark:teams_read spark:memberships_read spark:messages_read spark:rooms_write spark:people_read spark:kms spark:memberships_write spark:teams_write spark:team_memberships_read spark:team_memberships_write"
 
@@ -42,6 +40,10 @@ module OmniAuth
       def raw_info
         @raw_info ||= access_token.get('/me').parsed
       end
+
+      def callback_url
+  options[:callback_url] || full_host + script_name + callback_path
+end
     end
   end
 end

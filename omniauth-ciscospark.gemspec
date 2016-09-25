@@ -22,5 +22,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = %w(lib)
   gem.version       = OmniAuth::Ciscospark::VERSION
 
-  gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.3.1'
+  gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.4'
 end
