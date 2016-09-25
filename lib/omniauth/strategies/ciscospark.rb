@@ -13,6 +13,9 @@ module OmniAuth
         :authorize_url => '/v1/authorize',
         :token_url     => '/v1/access_token'
       }
+      option :authorize_params, {}
+      option :authorize_options, [:scope]
+      option :provider_ignores_state, true
       option :scope, "spark:messages_write spark:rooms_read spark:teams_read spark:memberships_read spark:messages_read spark:rooms_write spark:people_read spark:kms spark:memberships_write spark:teams_write spark:team_memberships_read spark:team_memberships_write"
 
       # These are called after authentication has succeeded. If
@@ -23,11 +26,15 @@ module OmniAuth
 
 
       def authorize_params
-  super.tap do |params|
-
-    session['omniauth.state'] = params[:state] if params['state']
-  end
-end
+              options.authorize_params[:state] = SecureRandom.hex(24)
+              params = options.authorize_params.merge(options_for("authorize"))
+              if OmniAuth.config.test_mode
+                @env ||= {}
+                @env["rack.session"] ||= {}
+              end
+              session["omniauth.state"] = params[:state]
+              params
+            end
 
 
       uid{ raw_info['id'] }
