@@ -8,7 +8,11 @@ module OmniAuth
 
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
-      option :client_options, {:site => "https://api.ciscospark.com/v1/authorize"}
+      option :client_options, {
+  :site          => 'https://api.ciscospark.com',
+  :authorize_url => '/v1/authorize',
+  :token_url     => '/v1/access_token'
+}
       option :scope, "spark:messages_write spark:rooms_read spark:teams_read spark:memberships_read spark:messages_read spark:rooms_write spark:people_read spark:kms spark:memberships_write spark:teams_write park:team_memberships_read spark:team_memberships_write"
 
       # These are called after authentication has succeeded. If
