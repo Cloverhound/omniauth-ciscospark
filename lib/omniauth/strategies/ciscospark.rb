@@ -37,11 +37,6 @@ module OmniAuth
         }
       end
 
-  #    def callback_phase
-#        puts 'test'
-#        token = build_access_token
-#      end
-
       def raw_info
         @raw_info ||= access_token.get('/me').parsed
       end
@@ -50,9 +45,6 @@ module OmniAuth
        options[:callback_url] || full_host + script_name + callback_path
       end
 
-      def build_access_token
-        request.params["code"]
-      end
     end
   end
 end
