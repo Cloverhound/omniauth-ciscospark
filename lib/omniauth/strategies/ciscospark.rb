@@ -37,10 +37,10 @@ module OmniAuth
         }
       end
 
-      def callback_phase
-        puts 'test'
-        token = build_access_token
-      end
+  #    def callback_phase
+#        puts 'test'
+#        token = build_access_token
+#      end
 
       def raw_info
         @raw_info ||= access_token.get('/me').parsed
