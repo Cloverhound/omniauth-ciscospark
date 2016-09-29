@@ -40,7 +40,6 @@ module OmniAuth
       def callback_phase
         puts 'test'
         token = build_access_token
-        super
       end
 
       def raw_info
