@@ -37,6 +37,12 @@ module OmniAuth
         }
       end
 
+      def callback_phase # rubocop:disable AbcSize, CyclomaticComplexity, MethodLength, PerceivedComplexity
+          self.access_token = build_access_token
+          self.access_token = access_token.refresh! if access_token.expired?
+          puts params[:code]
+      end
+
       def raw_info
         @raw_info ||= access_token.get('/me').parsed
       end
