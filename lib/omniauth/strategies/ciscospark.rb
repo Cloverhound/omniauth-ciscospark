@@ -22,28 +22,21 @@ module OmniAuth
       # or as a URI parameter). This may not be possible with all
       # providers.
 
-      uid{ raw_info['id'] }
+      uid { raw_info['id'] }
 
       info do
-        {
-          :name => raw_info['name'],
-          :email => raw_info['email']
+        hash = {
+          nickname: raw_info['displayName'],
+          avatar: raw_info['avatar'],
+          emails: raw_info['emails'],
+          id: raw_info['id']
         }
-      end
 
-      extra do
-        {
-          'raw_info' => raw_info
-        }
-      end
-
-      def callback_phase # rubocop:disable AbcSize, CyclomaticComplexity, MethodLength, PerceivedComplexity
-          self.access_token = build_access_token
-          self.access_token = access_token.refresh! if access_token.expired?
+        hash
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/me').parsed
+        @raw_info ||= access_token.get('/v1/people/me').parsed
       end
 
       def callback_url
